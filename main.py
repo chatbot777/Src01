@@ -7,8 +7,8 @@ from controller import Controller
 def main():
     app = QApplication([])
     model = Model()
-    view = View(model)
-    controller = Controller(view, model, app)  # noqa F841
+    view = View()
+    controller = Controller(app, view, model)  # noqa F841
 
     view.showWindow()
     app.exec_()

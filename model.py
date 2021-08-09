@@ -8,7 +8,17 @@ class Model:
         logger.debug(autolog())
         self.line = ''
         self.text = ''
+        self.portselect_visible = True
 
-    def returnPressed(self, text):
+    def portUpdated(self, list_ports):
+        self.list_ports = list_ports
+
+    def commReceived(self, text):
         logger.debug(autolog())
-        self.text += text + '\n'
+        self.text += text.decode() + '\n'
+
+    def commConnected(self):
+        self.portselect_visible = False
+
+    def commDisconnected(self):
+        self.portselect_visible = True
